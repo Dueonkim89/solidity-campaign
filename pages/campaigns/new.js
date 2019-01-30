@@ -5,6 +5,8 @@ import Layout from "../../components/Layout";
 import deployedFactory from "../../ethereum/factory";
 //web 3 with infura or metamask
 import web3 from "../../ethereum/web3";
+//import from the routes
+import { Router } from "../../routes";
 
 class CampaignNew extends Component {
   state = {
@@ -29,7 +31,8 @@ class CampaignNew extends Component {
           //provide address from where this is being invoked.
           from: accounts[0]
         });
-      t;
+      //reroute user to main page once they click button.
+      Router.pushRoute("/");
     } catch (err) {
       this.setState({ errorMessage: err.message });
     }
@@ -37,7 +40,7 @@ class CampaignNew extends Component {
   };
 
   render() {
-    console.log(this.state.minimumContribution);
+    console.log(this.state.errorMessage);
     return (
       <Layout>
         <h3>Create a Campaign</h3>
